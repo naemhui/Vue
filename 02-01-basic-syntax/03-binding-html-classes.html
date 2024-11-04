@@ -20,13 +20,16 @@
   <div id="app">
 
     <!-- Binding to Objects -->
-    <div>Text</div>
-    <div class="static">Text</div>
-    <div class="static">Text</div>
+    <div class="active">Text</div>
+    <div :class="{ active: isActive }">Text</div>
+      <!-- 다음 두 줄 코드 똑같 -->
+    <div class="static" :class="{ active : isActive, 'text-primary': hasInfo} ">Text</div>
+    <div class="static" :class="classObj">Text</div>
 
     <!-- Binding to Arrays -->
-    <div>Text</div>
-    <div>Text</div>
+    <!-- 다음 두 줄 -->
+    <div :class="[activeClass, infoClass]">Text</div>
+    <div :class="[{ active : isActive }, infoClass]">Text</div>
 
   </div>
 
@@ -36,7 +39,21 @@
 
     const app = createApp({
       setup() {
-        return {}
+        const isActive = ref(true) // false로 하면 Text 검정색
+        const hasInfo = ref(true)
+        const classObj = ref({
+          active : isActive,
+          'text-primary': hasInfo
+        })
+        const activeClass = ref('active')
+        const infoClass = ref('text-primary')
+        return {
+          isActive,
+          hasInfo,
+          classObj,
+          activeClass,
+          infoClass
+        }
       }
     })
 
