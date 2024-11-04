@@ -9,13 +9,13 @@
 
 <body>
   <div id="app">
-    <p>Hi there</p>
+    <p v-if="seen">Hi there</p> <!-- v-if="" -->
 
-    <a href="myUrl">Link</a>
+    <a v-bind:href="myUrl">Link</a> <!-- v-bind:"". bind(연결) -->
 
-    <button>button</button>
+    <button v-on:click="doSomething">button</button>
 
-    <form>
+    <form v-on:submit.prevent="onSubmit"> <!-- v-on:submit.prevent="onSubmit" -->
       <input type="submit">
     </form>
   </div>
@@ -26,7 +26,7 @@
 
     const app = createApp({
       setup() {
-        const seen = ref(true)
+        const seen = ref(true) // false로 바꿔보기
         const myUrl = 'https://www.google.co.kr/'
         const doSomething = function () {
           console.log('button clicked')
