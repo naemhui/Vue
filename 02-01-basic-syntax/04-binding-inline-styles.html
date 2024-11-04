@@ -32,7 +32,7 @@
         const fontSize = ref(50)
         const styleObj = ref({
           color: activeColor,
-          fontSize: fontSize + 'px'  // ref 객체 + 'px'
+          fontSize: fontSize.value + 'px'  // ref 객체 + 'px'
         })
         const styleObj2 = ref({
           color: 'blue',
@@ -40,7 +40,9 @@
         })
         return {
           activeColor,
-          fontSize
+          fontSize,
+          styleObj,
+          styleObj2
         }
       }
     })
